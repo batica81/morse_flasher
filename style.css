@@ -1,0 +1,41 @@
+body {
+    background-color: #000;
+}
+
+.mainField {
+    top: -15%;
+    /* width: 60vw; */
+    /* height: 29%; */
+    text-align: center;
+    background-color: #000;
+    font-size: 48em;
+    /* margin: -71px; */
+    /* align-self: center; */
+    position: absolute;
+}
+
+.content {
+    color: #000;
+    /* font-family: 'Hurricane', cursive; */
+}
+.contentRight {
+    color: #000;
+    /* font-family: 'Hurricane', cursive; */
+    display: none;
+}
+
+#flasher {
+    margin: 10px;
+    font-size: 25px;
+    /* display: none; */
+}
+
+.wrapper {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+#ta {
+	margin:10px;
+}
