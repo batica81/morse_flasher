@@ -31,6 +31,8 @@ select characters for random
 
 make responsive
 
+make flashing nicer (canvas, vsync, css tricks)
+
 app available here: 
 
 https://morse-flasher.pages.dev/
