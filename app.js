@@ -13,7 +13,7 @@ window.onload = function() {
     let flashDuration = 50
     let flashColor = "rgba(64.28571428571429%,100%,0%, 1)"; //555 nm wavelength
 
-    let wpmSpeed = 25 //initial speed
+    let wpmSpeed = 20 //initial speed
     let dotDuration
     let characterDotCount
 
@@ -28,7 +28,7 @@ window.onload = function() {
 
     async function flash(character, characterDotCount) {
         // let flashDelay = dotDuration * characterDotCount + (dotDuration * 3)
-        let flashDelay = dotDuration * (characterDotCount + 2.5)
+        let flashDelay = dotDuration * (characterDotCount + 3)
 
         await sleep(flashDelay);
         content.innerText = character
@@ -91,7 +91,9 @@ window.onload = function() {
     }
 
     flasher.addEventListener("click", function() {
-        ta.value = genRandomWords(5)
+        let txt = "  " + genRandomWords(5)
+        ta.value = txt
+        m.setText(txt);
     })
 
     ta.addEventListener("keyup", function() {
@@ -100,7 +102,8 @@ window.onload = function() {
 
     let m = new jscw({ "wpm": wpmSpeed });
     m.setText(morseText);
-    m.setEff(15)
+    m.setEff(10)
+    m.setFreq(662)
     m.renderPlayer('player', m);
     m.onParamChange = sync;
 

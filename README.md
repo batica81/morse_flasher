@@ -15,7 +15,7 @@ haptics
 
 dit dah screen flashing
 
-optimal colors (non perceptibe in combination with screen flashing)
+optimal colors (non-perceptible in combination with screen flashing)
 
 binaural sound (35hz gamma or similar, configurable)
 
@@ -25,14 +25,19 @@ save settings to local storage
 
 documentation
 
-multilanguage audio feedback for slower speeds
+multilingual audio feedback for slower speeds
 
 font selection
 
-research timing and audio visual perception
+research timing and audiovisual perception
 
 select characters for random
 
 make responsive
 
 position font in center by height
+
+proper stop on any key
+
+beginning pause configurable
+
