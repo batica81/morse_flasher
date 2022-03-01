@@ -5,10 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cp *.* ./build"
+    "build": "mkdir -p ./build && cp *.* ./build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Voja YU4HAK",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.10.0"

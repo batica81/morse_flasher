@@ -1,5 +1,6 @@
 Flashes letter after playing morse code
 
+
 TODO:
 
 wordsworth
@@ -25,4 +26,12 @@ multilanguage audio feedback for slower speeds
 font selection
 
 research timing and audio visual perception
+
+select characters for random
+
+make responsive
+
+app available here: 
+
+https://morse-flasher.pages.dev/
 
