@@ -1,7 +1,11 @@
-Flashes letter after playing morse code
+## Flashes letter after playing morse code.
 
+App available here:
 
-TODO:
+https://morse-flasher.pages.dev/
+
+---
+###TODO:
 
 wordsworth
 
@@ -31,7 +35,4 @@ select characters for random
 
 make responsive
 
-app available here: 
-
-https://morse-flasher.pages.dev/
-
+position font in center by height

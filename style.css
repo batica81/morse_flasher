@@ -1,5 +1,19 @@
 body {
     background-color: #000;
+    overflow: hidden;
+}
+
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 5%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.footer a {
+    color: #fff;
 }
 
 .mainField {

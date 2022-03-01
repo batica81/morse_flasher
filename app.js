@@ -58,7 +58,7 @@ window.onload = function() {
 
     function genRandomWords(numWords) {
         let wordList = ""
-        for (var i = 0; i < numWords; i++) {
+        for (let i = 0; i < numWords; i++) {
             wordList += Math.random().toString(36).replace(/[^a-z0-9]+/g, '').substr(0, 5) + " ";
         }
         return wordList
@@ -75,7 +75,7 @@ window.onload = function() {
 
         for (let j = 0; j < l.length; j++) {
             let el = l.substr(j, 1); // . or -
-            if (el != " ")
+            if (el !== " ")
                 out.push({ "t": time, "v": 0 });
             time += 1 * el_len[el];
             out.push({ "t": time, "v": 0 });
