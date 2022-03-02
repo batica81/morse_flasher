@@ -171,15 +171,34 @@
             return dotLength;
         }
 
-        getDotLength("t")
+        // getDotLength("t")
+
+        //
+        // function genRandomWordsOLD(numWords) {
+        //     let wordList = ""
+        //     for (var i = 0; i < numWords; i++) {
+        //       wordList += Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5) + " ";
+        //     }
+        //     return wordList
+        // }
+
+        // console.log(genRandomWordsOLD(10))
 
 
-        function genRandomWords(numWords) {
+        function genRandomWords(wordLength, numWords) {
             let wordList = ""
-            for (var i = 0; i < numWords; i++) {      
-              wordList += Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5) + " "; 
+            let text = "";
+            let possible = "abcdefghijklmnopqrstuvwxyz0123456789?/,.=";
+
+            for (let i = 0; i < numWords; i++) {
+                for (let i = 0; i < wordLength; i++) {
+                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+                }
+                wordList += text + " ";
+                text = ""
             }
             return wordList
         }
 
-        console.log(genRandomWords(10))
+        console.log(genRandomWords(5, 5));
+

@@ -56,10 +56,17 @@ window.onload = function() {
         m.setText(txt);
     }
 
-    function genRandomWords(numWords) {
+    function genRandomWords(wordLength, numWords) {
         let wordList = ""
+        let text = "";
+        let possible = "abcdefghijklmnopqrstuvwxyz0123456789?/,.=";
+
         for (let i = 0; i < numWords; i++) {
-            wordList += Math.random().toString(36).replace(/[^a-z0-9]+/g, '').substr(0, 5) + " ";
+            for (let i = 0; i < wordLength; i++) {
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            wordList += text + " ";
+            text = ""
         }
         return wordList
     }
@@ -91,7 +98,7 @@ window.onload = function() {
     }
 
     flasher.addEventListener("click", function() {
-        let txt = "  " + genRandomWords(5)
+        let txt = "  " + genRandomWords(5, 5)
         ta.value = txt
         m.setText(txt);
     })
