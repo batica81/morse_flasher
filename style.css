@@ -4,52 +4,59 @@ body {
 }
 
 .footer {
-    width: 100%;
-    position: absolute;
-    bottom: 5%;
     color: #fff;
-    display: flex;
-    justify-content: center;
+    text-align: center;
 }
 
 .footer a {
     color: #fff;
 }
 
-.mainField {
-    top: -15%;
-    /* width: 60vw; */
-    /* height: 29%; */
-    text-align: center;
+.contentwrapper {
     background-color: #000;
-    font-size: 48em;
-    /* margin: -71px; */
-    /* align-self: center; */
-    position: absolute;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-.content {
-    color: #000;
-    /* font-family: 'Hurricane', cursive; */
+.contentLeft {
+    background-color: #000;
+    margin-top: -16vh;
+    font-size: 92vh;
+    /*margin-right: 2%;  !* use for alignment *!*/
+    /*font-family: 'Hurricane', cursive; !* margin and font size will have to change *!*/
 }
+
 .contentRight {
-    color: #000;
-    /* font-family: 'Hurricane', cursive; */
+    background-color: #000;
+    margin-top: -16vh;
+    font-size: 92vh;
+    /*font-family: 'Hurricane', cursive;*/
     display: none;
 }
 
 #flasher {
     margin: 10px;
     font-size: 25px;
-    /* display: none; */
 }
 
-.wrapper {
-    text-align: center;
-    display: flex;
-    justify-content: space-around;
+#align {
+    margin: 10px;
+    font-size: 65px;
+    display: none;
+}
+
+.wrapperAll {
+}
+
+.controlWrapper {
+    max-width: 200px;
+    position: absolute;
+    padding: 20px;
+    z-index: 1000;
 }
 
 #ta {
-	margin:10px;
+    margin: 10px;
+    font-size: 30px;
 }

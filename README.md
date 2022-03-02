@@ -5,7 +5,7 @@ App available here:
 https://morse-flasher.pages.dev/
 
 ---
-###TODO:
+### TODO:
 
 wordsworth
 
@@ -33,11 +33,6 @@ research timing and audiovisual perception
 
 select characters for random
 
-make responsive
-
-position font in center by height
-
 proper stop on any key
 
 beginning pause configurable
-
