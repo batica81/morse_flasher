@@ -12,6 +12,17 @@ body {
     color: #fff;
 }
 
+.description {
+    color: #fff;
+    min-width: 290px;
+    font-size: 20px;
+    margin: 15px 10px;
+    text-align: justify;
+}
+
+.content{
+    color: rgb(164,255,0);
+}
 .contentwrapper {
     background-color: #000;
     text-align: center;
@@ -32,6 +43,9 @@ body {
     margin-top: -16vh;
     font-size: 92vh;
     /*font-family: 'Hurricane', cursive;*/
+}
+
+.hidden {
     display: none;
 }
 
@@ -59,4 +73,33 @@ body {
 #ta {
     margin: 10px;
     font-size: 30px;
+}
+
+.toggleWrapper {
+    margin: 10px;
+}
+
+input[type=checkbox] {
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    transform: scale(2);
+    padding: 10px;
+    filter: invert(270%) hue-rotate(70deg) brightness(1.7);
+}
+
+/* Might want to wrap a span around your checkbox text */
+.checkboxtext {
+    /* Checkbox text */
+    font-size: 110%;
+    display: inline;
+}
+
+.vrToggleLabel {
+    color: #fff;
+    font-weight: 700;
+    font-size: 25px;
+    padding-left: 5px;
 }

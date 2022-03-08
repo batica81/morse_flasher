@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Morse Flasher</title>
+    <link rel="manifest" href="/manifest.webmanifest">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Hurricane&display=swap" rel="stylesheet">
@@ -18,11 +19,20 @@
         <textarea cols="25" id="ta" rows="5">hello</textarea>
         <button id="flasher">Try Random</button>
         <button id="align">Align</button>
+        <div class="toggleWrapper">
+            <input type="checkbox" id="vrToggle" name="vrToggle" value="false">
+            <label class="vrToggleLabel" for="vrToggle">VR</label><br>
+        </div>
+        <div class="description">
+            This little app will play Morse code and flash the character at a very fast rate,
+            hopefully helping you build that all important instant character recognition.
+            You may try it with VR goggles for total immersion ;)
+        </div>
     </div>
 
     <div class="contentwrapper">
-        <span class="content contentLeft">H</span>
-        <span class="content contentRight">H</span>
+        <span class="content contentLeft">m</span>
+        <span class="content contentRight hidden">m</span>
     </div>
 
     <div class="footer">Created by YU4HAK in 2022. Code available at: &nbsp; <a href="https://github.com/batica81/morse_flasher">https://github.com/batica81/morse_flasher </a></div>

@@ -9,8 +9,6 @@ https://morse-flasher.pages.dev/
 
 wordsworth
 
-vr toggle
-
 haptics
 
 dit dah screen flashing
@@ -23,13 +21,9 @@ ui controls (colors, timing)
 
 save settings to local storage
 
-documentation
-
 multilingual audio feedback for slower speeds
 
 font selection
-
-research timing and audiovisual perception
 
 select characters for random
 

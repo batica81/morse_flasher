@@ -4,15 +4,18 @@ window.onload = function () {
     let contentLeft = document.getElementsByClassName('contentLeft')[0]
     let contentRight = document.getElementsByClassName('contentRight')[0]
     let ta = document.getElementById('ta')
+    let vrToggle = document.getElementById('vrToggle')
 
     let flasher = document.getElementById('flasher')
     let align = document.getElementById('align')
 
     let morseText = ""
     let flashDuration = 50
-    // let flashColor = "rgba(64.28571428571429%,100%,0%, 1)"; //555 nm wavelength
-    let flashColor = "rgb(164,255,0)"; //555 nm wavelength
-    let wpmSpeed = 20 //initial speed
+    let flashColor = "rgb(164,255,0)"; // ~555 nm wavelength
+    let wpmSpeed = 30 // initial speed
+    let effectiveSpeed = 20
+    let frequency = 680
+    let charset = "abcdefghijklmnopqrstuvwxyz0123456789?/,.=";
     let dotDuration
     let characterDotCount
 
@@ -26,7 +29,6 @@ window.onload = function () {
     }
 
     async function flash(character, characterDotCount) {
-        // let flashDelay = dotDuration * characterDotCount + (dotDuration * 3)
         let flashDelay = dotDuration * (characterDotCount + 3)
 
         await sleep(flashDelay);
@@ -34,11 +36,6 @@ window.onload = function () {
         contentRight.innerText = character
         contentLeft.style.color = flashColor
         contentRight.style.color = flashColor
-
-        // console.log("character: ", character);
-        // console.log("characterDotCount: ", characterDotCount)
-        // console.log("wpmSpeed: ", wpmSpeed)
-        // console.log("flashDelay: ", flashDelay)
 
         setTimeout(function () {
             contentLeft.style.color = "#000";
@@ -48,16 +45,15 @@ window.onload = function () {
 
     function sync() {
         calcParameters(m.wpm)
-        console.log("SYNC");
         let txt = ta.value;
         txt = "   " + txt.replace(/(?:\r\n|\r|\n)/g, " ");
         m.setText(txt);
     }
 
-    function genRandomWords(wordLength, numWords) {
+    function genRandomWords(wordLength, numWords, charset) {
         let wordList = ""
         let text = "";
-        let possible = "abcdefghijklmnopqrstuvwxyz0123456789?/,.=";
+        let possible = charset;
 
         for (let i = 0; i < numWords; i++) {
             for (let i = 0; i < wordLength; i++) {
@@ -95,12 +91,17 @@ window.onload = function () {
 
     function alignHelp() {
         contentwrapper.requestFullscreen();
-        contentLeft.style.color = "green"
-        contentRight.style.color = "green"
+        contentLeft.style.color = flashColor
+        contentRight.style.color = flashColor
     }
 
+    vrToggle.addEventListener("click", function (){
+        contentRight.classList.toggle('hidden')
+        console.log('toggling')
+    })
+
     flasher.addEventListener("click", function () {
-        let txt = "  " + genRandomWords(5, 5)
+        let txt = "  " + genRandomWords(5, 10, charset)
         ta.value = txt
         m.setText(txt);
     })
@@ -113,18 +114,22 @@ window.onload = function () {
 
     let m = new jscw({"wpm": wpmSpeed});
     m.setText(morseText);
-    m.setEff(10)
-    m.setFreq(662)
+    m.setEff(effectiveSpeed)
+    m.setFreq(frequency)
     m.renderPlayer('player', m);
     m.onParamChange = sync;
 
     m.onPlay = () => {
+        contentLeft.style.color = "black"
+        contentRight.style.color = "black"
         contentwrapper.requestFullscreen();
     }
 
     m.onFinished = () => {
         setTimeout(() => {
             document.exitFullscreen();
+            contentLeft.style.color = flashColor
+            contentRight.style.color = flashColor
         }, 1000)
     }
 
