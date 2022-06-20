@@ -23,9 +23,11 @@ save settings to local storage
 
 multilingual audio feedback for slower speeds
 
-font selection
+font selection - update
 
-select characters for random
+select characters for random - dropdown options
+
+minlength fix
 
 proper stop on any key
 

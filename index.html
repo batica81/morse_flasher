@@ -17,7 +17,46 @@
     <div class="controlWrapper">
         <div id="player"></div>
         <textarea cols="25" id="ta" rows="5">hello</textarea>
-        <button id="flasher">Try Random</button>
+        <label class="charsetLabel" for="charsetArea">Charset input:</label>
+        <input type="text" id="charsetArea" class="charsetArea buttonStyle" value="abcdefghijklmnopqrstuvwxyz0123456789?/,.=">
+        <div class="randomWrapper">
+            <label class="charsetLabel" for="randomMin">Min</label>
+            <select name="randomMin" class="buttonStyle" id="randomMin">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <label class="charsetLabel" for="randomMax">Max</label>
+            <select name="randomMax" class="buttonStyle" id="randomMax">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5" selected>5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <label class="charsetLabel" for="randomWordsNumber">Number of words</label>
+            <input type="text" value="5" name="randomWordsNumber" id="randomWordsNumber" class="buttonStyle">
+            <button id="flasher" class="buttonStyle">Create Random</button>
+        </div>
+        <button id="switchCase" class="buttonStyle">Switch Case</button>
+        <select name="fontSelector" class="buttonStyle" id="fontSelector">
+            <option value="0">Times</option>
+            <option value="1">Arial</option>
+            <option value="2">Monospace</option>
+            <option value="3">Comic</option>
+        </select>
         <button id="align">Align</button>
         <div class="toggleWrapper">
             <input type="checkbox" id="vrToggle" name="vrToggle" value="false">

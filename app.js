@@ -5,8 +5,14 @@ window.onload = function () {
     let contentRight = document.getElementsByClassName('contentRight')[0]
     let ta = document.getElementById('ta')
     let vrToggle = document.getElementById('vrToggle')
+    let fontSelector = document.getElementById('fontSelector')
+    let charsetArea = document.getElementById('charsetArea')
+    let randomMin = document.getElementById('randomMin')
+    let randomMax = document.getElementById('randomMax')
+    let randomWordsNumber = document.getElementById('randomWordsNumber')
 
     let flasher = document.getElementById('flasher')
+    let switchCase = document.getElementById('switchCase')
     let align = document.getElementById('align')
 
     let morseText = ""
@@ -18,6 +24,10 @@ window.onload = function () {
     let charset = "abcdefghijklmnopqrstuvwxyz0123456789?/,.=";
     let dotDuration
     let characterDotCount
+
+    let appSettings = {
+
+    }
 
     function calcParameters(newSpeed) {
         wpmSpeed = newSpeed
@@ -50,13 +60,13 @@ window.onload = function () {
         m.setText(txt);
     }
 
-    function genRandomWords(wordLength, numWords, charset) {
+    function genRandomWords(minLength, wordLength, numWords, charset) {
         let wordList = ""
         let text = "";
         let possible = charset;
 
         for (let i = 0; i < numWords; i++) {
-            for (let i = 0; i < wordLength; i++) {
+            for (let i = minLength; i <= wordLength; i++) {
                 text += possible.charAt(Math.floor(Math.random() * possible.length));
             }
             wordList += text + " ";
@@ -101,9 +111,37 @@ window.onload = function () {
     })
 
     flasher.addEventListener("click", function () {
-        let txt = "  " + genRandomWords(5, 10, charset)
+        let txt = "  " + genRandomWords(randomMin.value, randomMax.value, randomWordsNumber.value, charsetArea.value)
         ta.value = txt
         m.setText(txt);
+    })
+
+    switchCase.addEventListener("click", function () {
+        contentRight.classList.toggle('uppercase')
+        contentLeft.classList.toggle('uppercase')
+    })
+
+    fontSelector.addEventListener('change', function (){
+        switch (this.value) {
+
+            case '0':
+                contentRight.classList.toggle('firstFont')
+                contentLeft.classList.toggle('firstFont')
+                break;
+            case '1':
+                contentRight.classList.toggle('secondFont')
+                contentLeft.classList.toggle('secondFont')
+                break;
+            case '2':
+                contentRight.classList.toggle('thirdFont')
+                contentLeft.classList.toggle('thirdFont')
+                break;
+
+            case '3':
+                contentRight.classList.toggle('fourthFont')
+                contentLeft.classList.toggle('fourthFont')
+                break;
+        }
     })
 
     align.addEventListener("click", alignHelp)
@@ -122,6 +160,7 @@ window.onload = function () {
     m.onPlay = () => {
         contentLeft.style.color = "black"
         contentRight.style.color = "black"
+        document.querySelectorAll('body')[0].classList.add('overflowHidden')
         contentwrapper.requestFullscreen();
     }
 
@@ -130,6 +169,7 @@ window.onload = function () {
             document.exitFullscreen();
             contentLeft.style.color = flashColor
             contentRight.style.color = flashColor
+            document.querySelectorAll('body')[0].classList.remove('overflowHidden')
         }, 1000)
     }
 

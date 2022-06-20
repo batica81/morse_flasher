@@ -1,6 +1,6 @@
 body {
     background-color: #000;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .footer {
@@ -49,7 +49,7 @@ body {
     display: none;
 }
 
-#flasher {
+.buttonStyle {
     margin: 10px;
     font-size: 25px;
 }
@@ -102,4 +102,48 @@ input[type=checkbox] {
     font-weight: 700;
     font-size: 25px;
     padding-left: 5px;
+}
+
+.uppercase {
+    text-transform: uppercase !important;
+}
+
+.firstFont{
+    font-family: serif;
+}
+
+.secondFont{
+    font-family: sans-serif;
+}
+
+.thirdFont{
+    font-family: monospace;
+}
+
+.fourthFont{
+    font-family: 'Comic-sans';
+}
+
+.charsetLabel {
+    color: #fff;
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+.charsetArea {
+    width: 520px;
+}
+
+.randomWrapper {
+    width: 520px;
+    border: 1px solid white;
+    margin: 10px;
+}
+
+#randomWordsNumber {
+    max-width: 25px;
+}
+
+.overflowHidden {
+    overflow: hidden !important;
 }
