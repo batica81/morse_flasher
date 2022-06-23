@@ -7,6 +7,8 @@ https://morse-flasher.pages.dev/
 ---
 ### TODO:
 
+fix delay on android !
+
 wordsworth
 
 haptics
@@ -26,8 +28,6 @@ multilingual audio feedback for slower speeds
 font selection - update
 
 select characters for random - dropdown options
-
-minlength fix
 
 proper stop on any key
 

@@ -15,23 +15,26 @@ window.onload = function () {
     let switchCase = document.getElementById('switchCase')
     let align = document.getElementById('align')
 
-    let morseText = ""
-    let flashDuration = 50
-    let flashColor = "rgb(164,255,0)"; // ~555 nm wavelength
-    let wpmSpeed = 30 // initial speed
-    let effectiveSpeed = 20
-    let frequency = 680
-    let charset = "abcdefghijklmnopqrstuvwxyz0123456789?/,.=";
-    let dotDuration
-    let characterDotCount
-
     let appSettings = {
+        morseText : "",
+        flashDuration : 50,
+        flashColor : "rgb(164,255,0)",
+        wpmSpeed : 30,
+        effectiveSpeed : 25,
+        frequency : 680,
+        dotDuration : 10,
+        characterDotCount : 10,
+    }
 
+    let localSettings = JSON.parse(window.localStorage.getItem('morseFlasherSettings'));
+
+    if(localSettings !== null) {
+        appSettings = localSettings
     }
 
     function calcParameters(newSpeed) {
-        wpmSpeed = newSpeed
-        dotDuration = Math.round(60 / (50 * newSpeed) * 1000)
+        appSettings.wpmSpeed = newSpeed
+        appSettings.dotDuration = Math.round(60 / (50 * newSpeed) * 1000)
     }
 
     function sleep(ms) {
@@ -39,18 +42,18 @@ window.onload = function () {
     }
 
     async function flash(character, characterDotCount) {
-        let flashDelay = dotDuration * (characterDotCount + 3)
+        let flashDelay = appSettings.dotDuration * (characterDotCount + 3)
 
         await sleep(flashDelay);
         contentLeft.innerText = character
         contentRight.innerText = character
-        contentLeft.style.color = flashColor
-        contentRight.style.color = flashColor
+        contentLeft.style.color = appSettings.flashColor
+        contentRight.style.color = appSettings.flashColor
 
         setTimeout(function () {
             contentLeft.style.color = "#000";
             contentRight.style.color = "#000";
-        }, flashDuration)
+        }, appSettings.flashDuration)
     }
 
     function sync() {
@@ -60,14 +63,20 @@ window.onload = function () {
         m.setText(txt);
     }
 
-    function genRandomWords(minLength, wordLength, numWords, charset) {
+    function randomIntFromInterval(min, max) { // min and max included
+        if (min > max) {max = min}
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+    function genRandomWords(minLength, maxLength, numWords, charset) {
         let wordList = ""
         let text = "";
-        let possible = charset;
 
         for (let i = 0; i < numWords; i++) {
-            for (let i = minLength; i <= wordLength; i++) {
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            let currentLength = randomIntFromInterval(minLength, maxLength);
+
+            for (let j = 1; j <= currentLength; j++) {
+                text += charset.charAt(Math.floor(Math.random() * charset.length));
             }
             wordList += text + " ";
             text = ""
@@ -95,23 +104,22 @@ window.onload = function () {
             }
         }
         out.push({"t": time, "v": 0});
-        characterDotCount = out[out.length - 1].t
+        let characterDotCount = out[out.length - 1].t
         return characterDotCount;
     }
 
     function alignHelp() {
         contentwrapper.requestFullscreen();
-        contentLeft.style.color = flashColor
-        contentRight.style.color = flashColor
+        contentLeft.style.color = appSettings.flashColor
+        contentRight.style.color = appSettings.flashColor
     }
 
     vrToggle.addEventListener("click", function (){
         contentRight.classList.toggle('hidden')
-        console.log('toggling')
     })
 
     flasher.addEventListener("click", function () {
-        let txt = "  " + genRandomWords(randomMin.value, randomMax.value, randomWordsNumber.value, charsetArea.value)
+        let txt = "  " + genRandomWords(parseInt(randomMin.value), parseInt(randomMax.value), parseInt(randomWordsNumber.value), charsetArea.value.replaceAll(' ', ''))
         ta.value = txt
         m.setText(txt);
     })
@@ -150,14 +158,18 @@ window.onload = function () {
         sync(this.value);
     })
 
-    let m = new jscw({"wpm": wpmSpeed});
-    m.setText(morseText);
-    m.setEff(effectiveSpeed)
-    m.setFreq(frequency)
+    let m = new jscw({"wpm": appSettings.wpmSpeed});
+    m.setText(appSettings.morseText);
+    // m.setText("");
+    m.setEff(appSettings.effectiveSpeed)
+    m.setFreq(appSettings.frequency)
     m.renderPlayer('player', m);
     m.onParamChange = sync;
 
     m.onPlay = () => {
+        // todo: update settings from changes
+
+        window.localStorage.setItem('morseFlasherSettings', JSON.stringify(appSettings))
         contentLeft.style.color = "black"
         contentRight.style.color = "black"
         document.querySelectorAll('body')[0].classList.add('overflowHidden')
@@ -167,8 +179,8 @@ window.onload = function () {
     m.onFinished = () => {
         setTimeout(() => {
             document.exitFullscreen();
-            contentLeft.style.color = flashColor
-            contentRight.style.color = flashColor
+            contentLeft.style.color = appSettings.flashColor
+            contentRight.style.color = appSettings.flashColor
             document.querySelectorAll('body')[0].classList.remove('overflowHidden')
         }, 1000)
     }
