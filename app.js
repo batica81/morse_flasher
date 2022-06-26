@@ -29,6 +29,7 @@ window.onload = function () {
     let localSettings = JSON.parse(window.localStorage.getItem('morseFlasherSettings'));
 
     if(localSettings !== null) {
+        console.log('reading settings from localStorage')
         appSettings = localSettings
     }
 

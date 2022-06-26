@@ -135,15 +135,19 @@ input[type=checkbox] {
 }
 
 .randomWrapper {
-    width: 520px;
+    width: 540px;
     border: 1px solid white;
     margin: 10px;
 }
 
 #randomWordsNumber {
-    max-width: 25px;
+    max-width: 45px;
 }
 
 .overflowHidden {
     overflow: hidden !important;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
 }
