@@ -52,6 +52,8 @@ body {
 .buttonStyle {
     margin: 10px;
     font-size: 25px;
+    font-weight: 700;
+    padding: 5px;
 }
 
 #align {
@@ -132,6 +134,7 @@ input[type=checkbox] {
 
 .charsetArea {
     width: 520px;
+    padding: 10px;
 }
 
 .randomWrapper {
@@ -150,4 +153,11 @@ input[type=checkbox] {
 
 input[type=number]::-webkit-inner-spin-button {
     opacity: 1
+}
+
+#playButton {
+    background: rgb(164,255,0);
+    font-size: 40px;
+    width: 300px !important;
+    padding: 20px;
 }

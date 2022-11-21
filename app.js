@@ -10,6 +10,7 @@ window.onload = function () {
     let randomMin = document.getElementById('randomMin')
     let randomMax = document.getElementById('randomMax')
     let randomWordsNumber = document.getElementById('randomWordsNumber')
+    let playButton = document.getElementById('playButton')
 
     let flasher = document.getElementById('flasher')
     let switchCase = document.getElementById('switchCase')
@@ -19,9 +20,9 @@ window.onload = function () {
         morseText : "",
         flashDuration : 50,
         flashColor : "rgb(164,255,0)",
-        wpmSpeed : 30,
-        effectiveSpeed : 25,
-        frequency : 680,
+        wpmSpeed : 25,
+        effectiveSpeed : 20,
+        frequency : 780,
         dotDuration : 10,
         characterDotCount : 10,
     }
@@ -151,6 +152,10 @@ window.onload = function () {
                 contentLeft.classList.toggle('fourthFont')
                 break;
         }
+    })
+
+    playButton.addEventListener('click', function (){
+        m.play()
     })
 
     align.addEventListener("click", alignHelp)
