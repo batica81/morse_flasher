@@ -7,6 +7,8 @@ https://morse-flasher.pages.dev/
 ---
 ### TODO:
 
+make meaningful onCharacterFinished method
+
 fix delay on android !
 
 wordsworth

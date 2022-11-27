@@ -22,7 +22,7 @@ window.onload = function () {
         flashColor : "rgb(164,255,0)",
         wpmSpeed : 25,
         effectiveSpeed : 20,
-        frequency : 780,
+        frequency : 800,
         dotDuration : 10,
         characterDotCount : 10,
     }
@@ -106,8 +106,7 @@ window.onload = function () {
             }
         }
         out.push({"t": time, "v": 0});
-        let characterDotCount = out[out.length - 1].t
-        return characterDotCount;
+        return out[out.length - 1].t;
     }
 
     function alignHelp() {

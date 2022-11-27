@@ -14,8 +14,8 @@ body {
 
 .description {
     color: #fff;
-    min-width: 290px;
-    font-size: 20px;
+    min-width: 400px;
+    font-size: 25px;
     margin: 15px 10px;
     text-align: justify;
 }
@@ -99,7 +99,7 @@ input[type=checkbox] {
     display: inline;
 }
 
-.vrToggleLabel {
+.vrToggleLabel{
     color: #fff;
     font-weight: 700;
     font-size: 25px;
@@ -126,7 +126,7 @@ input[type=checkbox] {
     font-family: 'Comic-sans';
 }
 
-.charsetLabel {
+.charsetLabel, .taLabel, .fontSelectorLabel  {
     color: #fff;
     font-size: 25px;
     margin-left: 10px;

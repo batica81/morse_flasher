@@ -15,25 +15,33 @@
 <body>
 <div class="wraperAll">
     <div class="controlWrapper">
+        <div class="description">
+            This little app will play Morse code and flash the character at a very fast rate,
+            hopefully helping you build that all important instant character recognition.
+            <br>
+            <br>
+            You may try it with VR goggles for total immersion ;)
+        </div>
         <div id="player"></div>
+        <label class="taLabel" for="ta">Text to play</label>
         <textarea cols="25" id="ta" rows="5">hello</textarea>
         <label class="charsetLabel" for="charsetArea">Charset input:</label>
         <input type="text" id="charsetArea" class="charsetArea buttonStyle" value="abcdefghijklmnopqrstuvwxyz0123456789?/,.=">
         <div class="randomWrapper">
-            <label class="charsetLabel" for="randomMin">Min</label>
+            <label class="charsetLabel" for="randomMin">Min length</label>
             <select name="randomMin" class="buttonStyle" id="randomMin">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
-                <option value="5">5</option>
+                <option value="5" selected>5</option>
                 <option value="6">6</option>
                 <option value="7">7</option>
                 <option value="8">8</option>
                 <option value="9">9</option>
                 <option value="10">10</option>
             </select>
-            <label class="charsetLabel" for="randomMax">Max</label>
+            <label class="charsetLabel" for="randomMax">Max length</label>
             <select name="randomMax" class="buttonStyle" id="randomMax">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -46,11 +54,14 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
             </select>
+            <br>
             <label class="charsetLabel" for="randomWordsNumber">Number of words</label>
-            <input type="number" value="5" name="randomWordsNumber" id="randomWordsNumber" class="buttonStyle">
+            <input type="number" value="10" name="randomWordsNumber" id="randomWordsNumber" class="buttonStyle">
+            <br>
             <button id="flasher" class="buttonStyle">Create Random</button>
         </div>
         <button id="switchCase" class="buttonStyle">Switch Case</button>
+        <label class="fontSelectorLabel" for="fontSelector">Choose font</label>
         <select name="fontSelector" class="buttonStyle" id="fontSelector">
             <option value="0">Times</option>
             <option value="1">Arial</option>
@@ -63,11 +74,6 @@
             <input type="checkbox" id="vrToggle" name="vrToggle" value="false">
             <label class="vrToggleLabel" for="vrToggle">VR</label><br>
         </div>
-        <div class="description">
-            This little app will play Morse code and flash the character at a very fast rate,
-            hopefully helping you build that all important instant character recognition.
-            You may try it with VR goggles for total immersion ;)
-        </div>
     </div>
 
     <div class="contentwrapper">
@@ -78,7 +84,7 @@
     <div class="footer">Created by YU4HAK in 2022. Code available at: &nbsp; <a href="https://github.com/batica81/morse_flasher">https://github.com/batica81/morse_flasher </a></div>
 </div>
 
-<script src="jscwlib.js"></script>
+<script src="jscwlib-0.2.2.js"></script>
 <script src="app.js"></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "353875b72703490485606f3206acc46b"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
