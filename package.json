@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "Voja YU4HAK",
-  "license": "ISC",
+  "license": "Unlicense",
   "devDependencies": {
     "eslint": "^8.10.0"
   }

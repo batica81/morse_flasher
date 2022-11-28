@@ -1,5 +1,5 @@
 
-let contentWrapper = document.getElementsByClassName('contentwrapper')[0]
+let contentWrapper = document.getElementsByClassName('contentWrapper')[0]
 let contentLeft = document.getElementsByClassName('contentLeft')[0]
 let contentRight = document.getElementsByClassName('contentRight')[0]
 let ta = document.getElementById('ta')
@@ -10,7 +10,6 @@ let randomMin = document.getElementById('randomMin')
 let randomMax = document.getElementById('randomMax')
 let randomWordsNumber = document.getElementById('randomWordsNumber')
 let playButton = document.getElementById('playButton')
-
 let flasher = document.getElementById('flasher')
 let switchCase = document.getElementById('switchCase')
 let align = document.getElementById('align')
@@ -21,21 +20,17 @@ let appSettings = {
     flashColor : "rgb(164,255,0)",
     wpmSpeed : 25,
     effectiveSpeed : 20,
-    frequency : 800,
-    dotDuration : 10,
-    characterDotCount : 10,
+    q : 15,
+    frequency : 850,
+    dotDuration : 0,
+    characterDotCount : 0,
 }
 
 let localSettings = JSON.parse(window.localStorage.getItem('morseFlasherSettings'));
 
 if(localSettings !== null) {
-    console.log('reading settings from localStorage')
+    console.log('Reading settings from localStorage')
     appSettings = localSettings
-}
-
-function calcParameters(newSpeed) {
-    appSettings.wpmSpeed = newSpeed
-    appSettings.dotDuration = Math.round(60 / (50 * newSpeed) * 1000)
 }
 
 function sleep(ms) {
@@ -43,7 +38,7 @@ function sleep(ms) {
 }
 
 async function flash(character, characterDotCount) {
-    let flashDelay = appSettings.dotDuration * (characterDotCount + 3)
+    let flashDelay = appSettings.dotDuration * (characterDotCount + 4)
     // todo: rework the timing, it could be causing issues on Android
     await sleep(flashDelay);
     contentLeft.innerText = character
@@ -55,13 +50,6 @@ async function flash(character, characterDotCount) {
         contentLeft.style.color = "#000";
         contentRight.style.color = "#000";
     }, appSettings.flashDuration)
-}
-
-function sync() {
-    calcParameters(m.wpm)
-    let txt = ta.value;
-    txt = "   " + txt.replace(/(?:\r\n|\r|\n)/g, " ");
-    m.setText(txt);
 }
 
 function randomIntFromInterval(min, max) { // min and max included
@@ -108,22 +96,12 @@ function getCharacterDotCount(c, alphabet, el_len, time = 0) {
     return out[out.length - 1].t;
 }
 
-function alignHelp() {
-    contentWrapper.requestFullscreen();
-    contentLeft.style.color = appSettings.flashColor
-    contentRight.style.color = appSettings.flashColor
-}
-
 vrToggle.addEventListener("click", function (){
     contentRight.classList.toggle('hidden')
 })
 
 flasher.addEventListener("click", function () {
-    // todo: initial pause skewing the offset, needs better solution
-    // let txt = "  " + genRandomWords(parseInt(randomMin.value), parseInt(randomMax.value), parseInt(randomWordsNumber.value), charsetArea.value.replaceAll(' ', ''))
-    let txt =  genRandomWords(parseInt(randomMin.value), parseInt(randomMax.value), parseInt(randomWordsNumber.value), charsetArea.value.replaceAll(' ', ''))
-    ta.value = txt
-    m.setText(txt);
+    ta.value = genRandomWords(parseInt(randomMin.value), parseInt(randomMax.value), parseInt(randomWordsNumber.value), charsetArea.value.replaceAll(' ', ''))
 })
 
 switchCase.addEventListener("click", function () {
@@ -157,23 +135,36 @@ playButton.addEventListener('click', function (){
     m.play()
 })
 
-align.addEventListener("click", alignHelp)
-
-ta.addEventListener("keyup", function () {
-    sync(this.value);
+align.addEventListener("click", function (){
+    contentWrapper.requestFullscreen();
+    contentLeft.style.color = appSettings.flashColor
+    contentRight.style.color = appSettings.flashColor
 })
 
-let m = new jscw({"wpm": appSettings.wpmSpeed});
-m.setText(appSettings.morseText);
-// m.setText("");
-m.setEff(appSettings.effectiveSpeed)
-m.setFreq(appSettings.frequency)
+let m = new jscw({
+    "wpm": appSettings.wpmSpeed,
+    "eff": appSettings.effectiveSpeed,
+    "freq": appSettings.frequency,
+    "text": appSettings.morseText,
+    "q": appSettings.q,
+});
+
 m.renderPlayer('player', m);
-m.onParamChange = sync;
+
+m.onParamChange =  () => {
+    appSettings.wpmSpeed = m.wpm
+    appSettings.dotDuration = Math.round(60 / (50 * m.wpm) * 1000)
+    appSettings.effectiveSpeed = m.eff
+    appSettings.frequency = parseInt(m.freq)
+    appSettings.q = parseInt(m.q)
+    window.localStorage.setItem('morseFlasherSettings', JSON.stringify(appSettings))
+};
 
 m.onPlay = () => {
-    // todo: update settings from changes
-    window.localStorage.setItem('morseFlasherSettings', JSON.stringify(appSettings))
+    let txt = ta.value;
+    // todo: initial pause may be skewing the offset, needs better solution
+    txt = "  " + txt.replace(/(?:\r\n|\r|\n)/g, " ");
+    m.setText(txt);
     contentLeft.style.color = "black"
     contentRight.style.color = "black"
     document.querySelectorAll('body')[0].classList.add('overflowHidden')

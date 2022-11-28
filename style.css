@@ -27,7 +27,7 @@ body {
 .content{
     color: rgb(164,255,0);
 }
-.contentwrapper {
+.contentWrapper {
     background-color: #000;
     text-align: center;
     display: flex;
