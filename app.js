@@ -102,6 +102,11 @@ vrToggle.addEventListener("click", function (){
 
 flasher.addEventListener("click", function () {
     ta.value = genRandomWords(parseInt(randomMin.value), parseInt(randomMax.value), parseInt(randomWordsNumber.value), charsetArea.value.replaceAll(' ', ''))
+    ta.classList.add('hiddenText')
+})
+
+ta.addEventListener('click', function (){
+    this.classList.remove('hiddenText')
 })
 
 switchCase.addEventListener("click", function () {
