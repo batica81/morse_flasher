@@ -8,6 +8,7 @@
     <link rel="manifest" href="/manifest.webmanifest">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.cdnfonts.com/css/lucida-handwriting-std" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hurricane&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
@@ -27,6 +28,14 @@
         <textarea cols="25" id="ta" rows="5">hello</textarea>
         <label class="charsetLabel" for="charsetArea">Charset input:</label>
         <input type="text" id="charsetArea" class="charsetArea buttonStyle" value="abcdefghijklmnopqrstuvwxyz0123456789?/,.=">
+        <label for="inputPreset" class="charsetLabel">Input preset:</label>
+        <select name="inputPreset" id="inputPreset" class="buttonStyle">
+            <option value="abcdefghijklmnopqrstuvwxyz0123456789?/,.=">abcdefghijklmnopqrstuvwxyz0123456789?/,.=</option>
+            <option value="abcdefghijklmnopqrstuvwxyz0123456789">abcdefghijklmnopqrstuvwxyz0123456789</option>
+            <option value="abcdefghijklmnopqrstuvwxyz">abcdefghijklmnopqrstuvwxyz</option>
+            <option value="0123456789">0123456789</option>
+            <option value="?/,.=">?/,.=</option>
+        </select>
         <div class="randomWrapper">
             <label class="charsetLabel" for="randomMin">Min length</label>
             <select name="randomMin" class="buttonStyle" id="randomMin">
@@ -66,7 +75,8 @@
             <option value="0">Times</option>
             <option value="1">Arial</option>
             <option value="2">Monospace</option>
-            <option value="3">Comic</option>
+            <option value="3">Cursive</option>
+            <option value="4">Handwriting</option>
         </select>
         <button id="playButton" class="buttonStyle">PLAY <img class="playImage" src="play.png" alt="play button"></button>
         <button id="align">Align VR</button>

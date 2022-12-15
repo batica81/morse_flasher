@@ -13,6 +13,7 @@ let playButton = document.getElementById('playButton')
 let flasher = document.getElementById('flasher')
 let switchCase = document.getElementById('switchCase')
 let align = document.getElementById('align')
+let inputPreset = document.getElementById('inputPreset')
 
 let appSettings = {
     morseText : "",
@@ -115,25 +116,13 @@ switchCase.addEventListener("click", function () {
 })
 
 fontSelector.addEventListener('change', function (){
-    switch (this.value) {
-        case '0':
-            contentRight.classList.toggle('firstFont')
-            contentLeft.classList.toggle('firstFont')
-            break;
-        case '1':
-            contentRight.classList.toggle('secondFont')
-            contentLeft.classList.toggle('secondFont')
-            break;
-        case '2':
-            contentRight.classList.toggle('thirdFont')
-            contentLeft.classList.toggle('thirdFont')
-            break;
+    let fontArray = ['firstFont', 'secondFont', 'thirdFont', 'fourthFont', 'fifthFont']
+    contentRight.classList.add(...fontArray.splice(this.value,1))
+    contentRight.classList.remove(...fontArray)
 
-        case '3':
-            contentRight.classList.toggle('fourthFont')
-            contentLeft.classList.toggle('fourthFont')
-            break;
-    }
+    let fontArray2 = ['firstFont', 'secondFont', 'thirdFont', 'fourthFont', 'fifthFont']
+    contentLeft.classList.add(...fontArray2.splice(this.value,1))
+    contentLeft.classList.remove(...fontArray2)
 })
 
 playButton.addEventListener('click', function (){
@@ -146,6 +135,11 @@ align.addEventListener("click", function (){
     contentRight.style.color = appSettings.flashColor
 })
 
+inputPreset.addEventListener('change', function (){
+    charsetArea.value = this.value;
+})
+
+// eslint-disable-next-line no-undef
 let m = new jscw({
     "wpm": appSettings.wpmSpeed,
     "eff": appSettings.effectiveSpeed,

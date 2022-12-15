@@ -27,10 +27,6 @@ ui controls (colors, timing)
 
 multilingual audio feedback for slower speeds
 
-font selection - update
-
-select characters for random - dropdown options
-
 proper stop on any key
 
 beginning pause configurable

@@ -1,3 +1,5 @@
+/*@import url('https://fonts.cdnfonts.com/css/lucida-handwriting-std');*/
+
 body {
     background-color: #000;
     /*overflow: hidden;*/
@@ -39,14 +41,12 @@ body {
     margin-top: -16vh;
     font-size: 92vh;
     /*margin-right: 2%;  !* use for alignment *!*/
-    /*font-family: 'Hurricane', cursive; !* margin and font size will have to change *!*/
 }
 
 .contentRight {
     background-color: #000;
     margin-top: -16vh;
     font-size: 92vh;
-    /*font-family: 'Hurricane', cursive;*/
 }
 
 .hidden {
@@ -132,7 +132,11 @@ input[type=checkbox] {
 }
 
 .fourthFont{
-    font-family: 'Comic-sans';
+    font-family: 'Lucida Handwriting Std', cursive;
+}
+
+.fifthFont{
+    font-family: 'Hurricane', cursive;
 }
 
 .charsetLabel, .taLabel, .fontSelectorLabel  {
