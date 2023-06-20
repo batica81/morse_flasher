@@ -7,7 +7,7 @@ https://morse-flasher.pages.dev/
 ---
 ### TODO:
 
-responisve design
+responsive design
 
 make meaningful onCharacterFinished method
 
